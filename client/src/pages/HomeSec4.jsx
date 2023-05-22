@@ -7,7 +7,7 @@ function HomeSec4() {
     return (
         <div style={{ backgroundColor: '#fab700' }}>
             <Container maxWidth='lg'>
-                <Box sx={{ flexGrow: 1,textAlign:'center',padding:'60px 0px' }}>
+                <Box sx={{ flexGrow: 1,textAlign:'center',padding:'80px 0px' }}>
                     <Grid container spacing={2}>
                         <Grid item xs={6} lg={2}>
                             <p style={{fontSize:'50px',color:'white',fontFamily:'sans-serif'}}>2536</p>
