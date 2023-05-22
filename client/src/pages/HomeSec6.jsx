@@ -1,39 +1,57 @@
-import { Container } from '@mui/system'
-import React from 'react'
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { Container } from "@mui/system";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getSecurity } from "../api/requests";
 
-function HomeSec5() {
-  return (
-<div style={{color:'#f9f9ff'}}>
-<Container maxWidth='lg'>
-                <Box sx={{ flexGrow: 1,textAlign:'center',padding:'60px 0px' }}>
+const HomeSec6 = () => {
+    const [cards, setCards] = useState([])
+    useEffect(() => {
+        getSecurity().then(resp => {
+            setCards(resp)
+        })
+    }, [])
+    return (
+        <div style={{ width: "100%", height: "100vh", padding: "5% 0 " }}>
+            <Typography style={{ fontSize: '36px', textAlign: 'center', fontWeight: '700' }}>Latest From Our Gallery</Typography>
+            <p style={{ color: 'lightgrey', textAlign: 'center', marginTop: '2%', fontFamily: 'sans-serif', marginBottom: '40px' }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et <br /> dolore magna aliqua.</p>
+            <Box sx={{ flexGrow: 1, padding: "4% 0" }}>
+                <Container>
                     <Grid container spacing={2}>
-                        <Grid item xs={6} lg={2}>
-                            <p style={{fontSize:'50px',color:'white',fontFamily:'sans-serif'}}>2536</p>
-                            <p style={{color:'white',}}>Projects Completed</p>
-                        </Grid>
-                        <Grid item xs={6} lg={2}>
-                            <p style={{fontSize:'50px',color:'white',fontFamily:'sans-serif'}}>6784</p>
-                            <p style={{color:'white',}}>Really Happy Clients</p>
-                        </Grid>
-                        <Grid item xs={6} lg={2}>
-                            <p style={{fontSize:'50px',color:'white',fontFamily:'sans-serif'}}>1059</p>
-                            <p style={{color:'white',}}>Total Tasks Completed</p>
-                        </Grid>
-                        <Grid item xs={6} lg={2}>
-                            <p style={{fontSize:'50px',color:'white',fontFamily:'sans-serif'}}>2239</p>
-                            <p style={{color:'white',}}>Cups of Coffee Taken</p>
-                        </Grid>
-                        <Grid item xs={6} lg={2}>
-                            <p style={{fontSize:'50px',color:'white',fontFamily:'sans-serif'}}>434</p>
-                            <p style={{color:'white',}}>In House Professionals</p>
-                        </Grid>
+                        {cards && cards.map((card) => {
+                            return <Grid item xs={12} md={6} lg={3}>
+                                <Card sx={{ maxWidth: 345 }}>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            component="img"
+                                            height="140"
+                                            image={card.img}
+                                            alt="employer"
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                               {card.title}
+                                            </Typography>
+                                            <Typography variant="body2" color="text.secondary">
+                                                {card.desc}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </Grid>
+                        })}
                     </Grid>
-                </Box>
-            </Container>
-</div>
-    )
-}
+                </Container>
+            </Box>
+        </div>
+    );
+};
 
-export default HomeSec5
+export default HomeSec6;

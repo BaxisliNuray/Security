@@ -9,7 +9,6 @@ function MainRoot() {
 
             <Navbar />
             <Outlet />
-
             <Footer />
 
         </>

@@ -10,15 +10,10 @@ import PublicIcon from '@mui/icons-material/Public';
 import InstagramIcon from '@mui/icons-material/Instagram';
 const Footer = () => {
   return (
-    <div
-      style={{
-        width: "100%",
+    <div style={{
         padding:"30px 0",
-        backgroundColor: "#04091e",
-        bottom: 0,
-      }}
-    >
-      <Box sx={{ flexGrow: 1 }}>
+        backgroundColor: "#04091e",}}>
+      <Box sx={{ flexGrow: 1}}>
         <Container style={{ paddingTop: "4%" }}>
           <Grid container spacing={0}>
             <Grid item xs={12} md={6} lg={4}>
